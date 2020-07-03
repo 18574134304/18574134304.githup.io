@@ -9,7 +9,7 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="connect();">Click here</button>
+    <button onclick="connect();">Click</button>
     <script>
         function connect() {
             navigator.bluetooth.requestDevice(
@@ -17,7 +17,7 @@
                     acceptAllDevices: true
                 })
                 .then(device => {
-                    alert('点击了配对','213',device)
+                    alert(device)
                     console.log('Got device');
                 })
                 .catch(error => {
