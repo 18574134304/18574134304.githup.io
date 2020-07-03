@@ -17,8 +17,7 @@
                     acceptAllDevices: true
                 })
                 .then(device => {
-                    alert(device)
-                    console.log('Got device');
+                    alert('选择了' + device.name + 'id' + device.id)
                 })
                 .catch(error => {
                     alert(error);
