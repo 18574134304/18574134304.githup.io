@@ -9,17 +9,20 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="connect();">Click</button>
+    <button onclick="connect();">Click here</button>
     <script>
         function connect() {
-            navigator.bluetooth.requestDevice({
-                filters: [{
-                    services: ['battery_service']
-                }]
-            }).then(device => {
-                alert('Got device:', device.name);
-                alert('id:', device.id);
-            });
+            navigator.bluetooth.requestDevice(
+                {
+                    acceptAllDevices: true
+                })
+                .then(device => {
+                    alert('点击了配对','213',device)
+                    console.log('Got device');
+                })
+                .catch(error => {
+                    alert(error);
+                });
         }
     </script>
 </body>
