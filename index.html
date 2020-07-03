@@ -9,7 +9,7 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="connect();">Click 17</button>
+    <button onclick="connect();">Click 18</button>
     <script>
         function connect() {
             navigator.bluetooth.requestDevice(
@@ -25,8 +25,8 @@
                                 function (servers) {
                                     alert('getPrimaryServices' + JSON.stringify(servers))
                                 },
-                                function () {
-                                    alert('error getPrimaryServices')
+                                function (error) {
+                                    alert('error getPrimaryServices' + error)
 
                                 }
                             )
