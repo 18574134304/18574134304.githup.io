@@ -12,17 +12,14 @@
     <button onclick="connect();">Click here</button>
     <script>
         function connect() {
-            navigator.bluetooth.requestDevice(
-                {
-                    acceptAllDevices: true
-                })
-                .then(device => {
-                    alert('ok',device)
-                    console.log('Got device');
-                })
-                .catch(error => {
-                    alert(error);
-                });
+            navigator.bluetooth.requestDevice({
+                filters: [{
+                    services: ['battery_service']
+                }]
+            }).then(device => {
+                console.log('Got device:', device.name);
+                console.log('id:', device.id);
+            });
         }
     </script>
 </body>
