@@ -12,7 +12,7 @@
     <button onclick="connect();">Click here</button>
     <script>
         function connect() {
-            alert('执行了');
+            alert(navigator.bluetooth)
             navigator.bluetooth.requestDevice(
                 {
                     acceptAllDevices: true
