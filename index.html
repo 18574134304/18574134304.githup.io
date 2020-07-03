@@ -9,7 +9,7 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="connect();">Click here</button>
+    <button onclick="connect();">Click</button>
     <script>
         function connect() {
             navigator.bluetooth.requestDevice({
@@ -17,8 +17,8 @@
                     services: ['battery_service']
                 }]
             }).then(device => {
-                console.log('Got device:', device.name);
-                console.log('id:', device.id);
+                alert('Got device:', device.name);
+                alert('id:', device.id);
             });
         }
     </script>
