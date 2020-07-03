@@ -9,7 +9,7 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="connect();">Click 13</button>
+    <button onclick="connect();">Click 14</button>
     <script>
         function connect() {
             navigator.bluetooth.requestDevice(
@@ -21,10 +21,10 @@
                     // console.dir(device);
                     return device.gatt.connect().then(
                         function (server) {
-                            console.log(server)
+                            alert('ccc   '+server)
                         },
                         function (error) {
-                            console.log('connect' + error);
+                            alert('connect   ' + error);
 
                         }
                     )
