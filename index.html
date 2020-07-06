@@ -9,12 +9,14 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="conect();">Click 27</button>
+    <button onclick="conect();">Click 28</button>
     <script>
         function conect() {
             navigator.bluetooth.requestDevice(
                 {
-                    acceptAllDevices: true
+                    filters: [
+                        { namePrefix: 'i' }
+                    ]
                 })
                 .then(device => {
                     console.dir(device);
