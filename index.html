@@ -9,9 +9,9 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="connect();">Click 26</button>
+    <button onclick="conect();">Click 27</button>
     <script>
-        function connect() {
+        function conect() {
             navigator.bluetooth.requestDevice(
                 {
                     acceptAllDevices: true
@@ -20,9 +20,9 @@
                     console.dir(device);
                     alert('选择了' + device.name + '\nID是:   ' + device.id)
 
-                    let server = await device.gatt.connect();
+                    let server = device.gatt.connect();
                     console.log(server);
-                    
+
 
                     // return device.gatt.connect().then(
                     //     function (server) {
