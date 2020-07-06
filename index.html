@@ -9,7 +9,7 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="connect();">Click 25</button>
+    <button onclick="connect();">Click 26</button>
     <script>
         function connect() {
             navigator.bluetooth.requestDevice(
@@ -19,22 +19,27 @@
                 .then(device => {
                     console.dir(device);
                     alert('选择了' + device.name + '\nID是:   ' + device.id)
-                    //     return device.gatt.connect().then(
-                    //         function (server) {
-                    //             server.getPrimaryServices().then(
-                    //                 function (servers) {
-                    //                     alert('getPrimaryServices' + JSON.stringify(servers))
-                    //                 },
-                    //                 function (error) {
-                    //                     alert('error getPrimaryServices' + error)
 
-                    //                 }
-                    //             )
-                    //         },
-                    //         function (error) {
-                    //             alert('连接失败');
-                    //         }
-                    //     )
+                    let server = await device.gatt.connect();
+                    console.log(server);
+                    
+
+                    // return device.gatt.connect().then(
+                    //     function (server) {
+                    //         server.getPrimaryServices().then(
+                    //             function (servers) {
+                    //                 alert('getPrimaryServices' + JSON.stringify(servers))
+                    //             },
+                    //             function (error) {
+                    //                 alert('error getPrimaryServices' + error)
+
+                    //             }
+                    //         )
+                    //     },
+                    //     function (error) {
+                    //         alert('连接失败');
+                    //     }
+                    // )
                 })
                 .catch(error => {
                     console.log(error);
