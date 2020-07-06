@@ -9,21 +9,20 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="conect();">Click 29</button>
+    <button onclick="conect();">Click 30</button>
     <script>
         function conect() {
             navigator.bluetooth.requestDevice(
                 {
-                    filters: [{
-                        services: ['0009180d-0000-1000-8000-00705f9b34fb']
-                    }]
+                    acceptAllDevices: true
                 })
                 .then(device => {
                     console.dir(device);
                     alert('选择了' + device.name + '\nID是:   ' + device.id)
-
+                    console.log(1,device.gatt);
+                    
                     let server = device.gatt.connect();
-                    console.log(server);
+                    console.log(2,server);
 
 
                     // return device.gatt.connect().then(
