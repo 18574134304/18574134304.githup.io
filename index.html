@@ -9,19 +9,39 @@
 
 <body>
     <h1>hello world</h1>
-    <button id="the-button">Click 24</button>
+    <button onclick="connect();">Click 25</button>
     <script>
-        const button = document.querySelector('#the-button');
-        button.addEventListener('click', function () {
-            navigator.bluetooth.requestDevice({
-                filters: [{
-                    services: ['battery_service']
-                }]
-            }).then(device => {
-                console.log('Got device:', device.name);
-                console.log('id:', device.id);
-            });
-        });
+        function connect() {
+            navigator.bluetooth.requestDevice(
+                {
+                    acceptAllDevices: true
+                })
+                .then(device => {
+                    console.dir(device);
+                    alert('选择了' + device.name + '\nID是:   ' + device.id)
+                        //     return device.gatt.connect().then(
+                        //         function (server) {
+                        //             server.getPrimaryServices().then(
+                        //                 function (servers) {
+                        //                     alert('getPrimaryServices' + JSON.stringify(servers))
+                        //                 },
+                        //                 function (error) {
+                        //                     alert('error getPrimaryServices' + error)
+
+                        //                 }
+                        //             )
+                        //         },
+                        //         function (error) {
+                        //             alert('连接失败');
+                        //         }
+                        //     )
+                        // })
+                        .catch(error => {
+                            console.log(error);
+
+                            alert(error);
+                        });
+                }
     </script>
 </body>
 
