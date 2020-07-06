@@ -9,13 +9,17 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="connect();">Click 20</button>
+    <button onclick="connect();">Click 22</button>
     <script>
         function connect() {
-            navigator.bluetooth.requestDevice(
-                {
-                    acceptAllDevices: true
-                })
+            let options = {
+                filters: [
+                    { services: ['DsiSKv258BhGvNFLiXTPaA=='] },
+                    { name: 'Mi Band 3' }
+                ],
+                optionalServices: ['battery_service']
+            }
+            navigator.bluetooth.requestDevice(options)
                 .then(device => {
                     console.dir(device);
                     alert('选择了' + device.name + 'ID是:   ' + device.id)
