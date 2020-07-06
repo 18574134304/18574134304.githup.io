@@ -9,46 +9,19 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="connect();">Click 23</button>
+    <button id="the-button">Click 24</button>
     <script>
-        function connect() {
-            let options = {
-                filters: [
-                    { services: ['DsiSKv258BhGvNFLiXTPaA=='] },
-                    { name: 'Mi Band 3' }
-                ],
-                optionalServices: ['battery_service']
-            }
-            navigator.bluetooth.requestDevice(options)
-                .then(device => {
-                    console.dir(device);
-                    alert('选择了' + device.name + 'ID是:   ' + device.id)
-                    return device.gatt.connect().then(
-                        function (server) {
-                            server.getPrimaryServices().then(
-                                function (servers) {
-                                    alert('getPrimaryServices' + JSON.stringify(servers))
-                                },
-                                function (error) {
-                                    alert('error getPrimaryServices' + error)
-
-                                }
-                            )
-                        },
-                        function (error) {
-                            alert(error)
-
-                            alert('连接失败');
-
-                        }
-                    )
-                })
-                .catch(error => {
-                    alert(error);
-                    console.log(error);
-                    
-                });
-        }
+        const button = document.querySelector('#the-button');
+        button.addEventListener('click', function () {
+            navigator.bluetooth.requestDevice({
+                filters: [{
+                    services: ['battery_service']
+                }]
+            }).then(device => {
+                console.log('Got device:', device.name);
+                console.log('id:', device.id);
+            });
+        });
     </script>
 </body>
 
