@@ -9,7 +9,7 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="conect();">Click 33</button>
+    <button onclick="conect();">Click 34</button>
     <script>
 
 
@@ -33,13 +33,12 @@
         function conect() {
             navigator.bluetooth.requestDevice(
                 {
-                    filters: [{ namePrefix: 'i' }]
+                    acceptAllDevices: true
                 })
                 .then(device => device.gatt.connect()).
                 then(server => server.getPrimaryService())
                 .catch(error => {
                     console.log(error);
-
                     alert(error);
                 });
         }
