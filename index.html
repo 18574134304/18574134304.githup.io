@@ -9,39 +9,36 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="conect();">Click 30</button>
+    <button onclick="conect();">Click 31</button>
     <script>
+
+
+
+        // return device.gatt.connect().then(
+        //     function (server) {
+        //         server.getPrimaryServices().then(
+        //             function (servers) {
+        //                 alert('getPrimaryServices' + JSON.stringify(servers))
+        //             },
+        //             function (error) {
+        //                 alert('error getPrimaryServices' + error)
+
+        //             }
+        //         )
+        //     },
+        //     function (error) {
+        //         alert('连接失败');
+        //     }
+        // )
         function conect() {
             navigator.bluetooth.requestDevice(
                 {
-                    acceptAllDevices: true
+                    filters: [{
+                        services: ['0009180d-0000-1000-8000-00705f9b34fb']
+                    }]
                 })
-                .then(device => {
-                    console.dir(device);
-                    alert('选择了' + device.name + '\nID是:   ' + device.id)
-                    console.log(1,device.gatt);
-                    
-                    let server = device.gatt.connect();
-                    console.log(2,server);
-
-
-                    // return device.gatt.connect().then(
-                    //     function (server) {
-                    //         server.getPrimaryServices().then(
-                    //             function (servers) {
-                    //                 alert('getPrimaryServices' + JSON.stringify(servers))
-                    //             },
-                    //             function (error) {
-                    //                 alert('error getPrimaryServices' + error)
-
-                    //             }
-                    //         )
-                    //     },
-                    //     function (error) {
-                    //         alert('连接失败');
-                    //     }
-                    // )
-                })
+                .then(device => device.gatt.connect()).
+                then(server => server.getPrimaryService())
                 .catch(error => {
                     console.log(error);
 
