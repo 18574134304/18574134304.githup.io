@@ -9,7 +9,7 @@
 
 <body>
     <h1>hello world</h1>
-    <button onclick="conect();">Click 34</button>
+    <button onclick="conect();">Click 35</button>
     <script>
 
 
@@ -35,8 +35,11 @@
                 {
                     acceptAllDevices: true
                 })
-                .then(device => device.gatt.connect()).
-                then(server => server.getPrimaryService())
+                .then(function (device) {
+                    console.log(device);
+                    console.log(device.gatt.connect());
+
+                })
                 .catch(error => {
                     console.log(error);
                     alert(error);
