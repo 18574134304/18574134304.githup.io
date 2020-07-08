@@ -243,7 +243,7 @@ class BluetoothTerminal {
 
     // filters: [{ services: [this._serviceUuid] }, { namePrefix: 'i' }],
     return navigator.bluetooth.requestDevice({
-      filters: [{ services: [this._serviceUuid] }, { namePrefix: 'Mi' }],
+      filters: [{ services: ['00001800-0000-1000-8000-00805F9B34FB','00001801-0000-1000-8000-00805F9B34FB'] }, { namePrefix: 'Mi' }],
     }).
       then((device) => {
         this._log('"' + device.name + '" bluetooth device selected');
