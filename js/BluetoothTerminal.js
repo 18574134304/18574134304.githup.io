@@ -202,6 +202,8 @@ class BluetoothTerminal {
       then((device) => this._connectDeviceAndCacheCharacteristic(device)).
       then((characteristic) => this._startNotifications(characteristic)).
       catch((error) => {
+        console.log('_connectToDevice 4444444444444444444');
+        
         this._log(error);
         return Promise.reject(error);
       });
@@ -271,15 +273,20 @@ class BluetoothTerminal {
     return device.gatt.connect().
       then((server) => {
         this._log('GATT server connected', 'Getting service...');
+        console.log('connect 111111111111111');
 
         return server.getPrimaryService("battery_service");
+
       }).
       then((service) => {
         this._log('Service found', 'Getting characteristic...');
+        console.log('getPrimaryService 222222222222222222222222222');
 
-        return service.getCharacteristic(this._characteristicUuid);
+        return service.getCharacteristic("battery_level");
       }).
       then((characteristic) => {
+        console.log('getCharacteristic 3333333333333333333333333333333');
+
         this._log('Characteristic found');
 
         this._characteristic = characteristic; // Remember characteristic.
