@@ -240,10 +240,8 @@ class BluetoothTerminal {
    */
   _requestBluetoothDevice() {
     this._log('Requesting bluetooth device...');
-
-    // filters: [{ services: [this._serviceUuid] }, { namePrefix: 'i' }],
     return navigator.bluetooth.requestDevice({
-      filters: [{ services: [this._serviceUuid] }, { namePrefix: 'Mi' }],
+      filters: [{ services: ['battery_service'] }, { namePrefix: 'Mi' }],
     }).
       then((device) => {
         this._log('"' + device.name + '" bluetooth device selected');
@@ -274,7 +272,7 @@ class BluetoothTerminal {
       then((server) => {
         this._log('GATT server connected', 'Getting service...');
 
-        return server.getPrimaryService(this._serviceUuid);
+        return server.getPrimaryService("battery_service");
       }).
       then((service) => {
         this._log('Service found', 'Getting characteristic...');
