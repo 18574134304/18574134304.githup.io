@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["about"],{"0e91":function(e,n,t){"use strict";t.r(n);var a=function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"canteen"})},s=[],c=t("2877"),l={},u=Object(c["a"])(l,a,s,!1,null,null,null);n["default"]=u.exports}}]);
-//# sourceMappingURL=about.ca2ba214.js.map
